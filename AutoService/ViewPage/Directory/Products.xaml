@@ -1,0 +1,37 @@
+﻿<Page x:Class="AutoService.ViewPage.Directory.Products"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoService.ViewPage.Directory"
+      mc:Ignorable="d" 
+      d:DesignHeight="391" d:DesignWidth="633"
+      Title="Products">
+    <Grid>
+        <GroupBox Grid.Column="0">
+            <ListView ItemsSource="{Binding ProdDir}" SelectedItem="{Binding SelectedProdDir}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Наименование" Width="95" DisplayMemberBinding="{Binding NameOfProd}"/>
+                        <GridViewColumn Header="№ производителя" Width="115" DisplayMemberBinding="{Binding ManufNumber}"/>
+                        <GridViewColumn Header="Кол-во" Width="60" DisplayMemberBinding="{Binding Number}"/>
+                        <GridViewColumn Header="Цена за шт" Width="80" DisplayMemberBinding="{Binding PriceForOne}"/>
+                        <GridViewColumn Header="Сумма" Width="55" DisplayMemberBinding="{Binding Sum}"/>
+                        <GridViewColumn Header="Скидка" Width="55" DisplayMemberBinding="{Binding Discount}"/>
+                        <GridViewColumn Header="Наличие на складе" Width="115" DisplayMemberBinding="{Binding StockAvail}"/>
+                    </GridView>
+                </ListView.View>
+
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить товар" Command="{Binding AddProd}"/>
+                        <MenuItem Header="Редактировать товар" Command="{Binding EditProd}"/>
+                        <MenuItem Header="Удалить товар" Command="{Binding RemoveProd}"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+
+            </ListView>
+        </GroupBox>
+    </Grid>
+
+</Page>

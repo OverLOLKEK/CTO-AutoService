@@ -1,0 +1,33 @@
+﻿<Page x:Class="AutoService.ViewPage.Directory.Clients"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoService.ViewPage.Directory"
+      mc:Ignorable="d" 
+      d:DesignHeight="391" d:DesignWidth="633"
+      Title="Clients">
+    <Grid>
+        <GroupBox Grid.Column="0">
+            <ListView ItemsSource="{Binding ClientsDir}" SelectedItem="{Binding SelectedClientsDir}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Фамилия" Width="65" DisplayMemberBinding="{Binding Surname}"/>
+                        <GridViewColumn Header="Имя" Width="35" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Отчество" Width="65" DisplayMemberBinding="{Binding Patronymi}"/>
+                        <GridViewColumn Header="Номер телефона" Width="120" DisplayMemberBinding="{Binding TeleNumb}"/>
+                    </GridView>
+                </ListView.View>
+
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить клиента" Command="{Binding AddClient}"/>
+                        <MenuItem Header="Редактировать клиента" Command="{Binding EditClient}"/>
+                        <MenuItem Header="Удалить клиента" Command="{Binding RemoveClient}"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+
+            </ListView>
+        </GroupBox>
+    </Grid>
+</Page>

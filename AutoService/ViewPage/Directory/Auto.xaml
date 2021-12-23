@@ -1,0 +1,38 @@
+﻿<Page x:Class="AutoService.ViewPage.Directory.Auto"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoService.ViewPage.Directory"
+      mc:Ignorable="d" 
+      d:DesignHeight="391" d:DesignWidth="633"
+      Title="Auto">
+    <Grid>
+        <GroupBox Grid.Column="0">
+            <ListView ItemsSource="{Binding AutoDir}" SelectedItem="{Binding SelectedAutoDir}">
+                <!--Изменить оба Binding-->
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Гос. номер" Width="80" DisplayMemberBinding="{Binding GoverNumber}"/>
+                        <GridViewColumn Header="Модель" Width="70" DisplayMemberBinding="{Binding Model}"/>
+                        <GridViewColumn Header="Год выпуска" Width="90" DisplayMemberBinding="{Binding YearOfIssue}"/>
+                        <GridViewColumn Header="Пробег" Width="70" DisplayMemberBinding="{Binding Mileage}"/>
+                        <GridViewColumn Header="VIN" Width="40" DisplayMemberBinding="{Binding VIN}"/>
+                        <GridViewColumn Header="Двигатель" Width="70" DisplayMemberBinding="{Binding Engine}"/>
+                        <GridViewColumn Header="Кузов" Width="70" DisplayMemberBinding="{Binding Body}"/>
+                        <GridViewColumn Header="Шасси" Width="70" DisplayMemberBinding="{Binding Chassis}"/>
+                    </GridView>
+                </ListView.View>
+
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить авто" Command="{Binding AddAuto}"/>
+                        <MenuItem Header="Редактировать авто" Command="{Binding EditAuto}"/>
+                        <MenuItem Header="Удалить авто" Command="{Binding RemoveAuto}"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+
+            </ListView>
+        </GroupBox>
+    </Grid>
+</Page>

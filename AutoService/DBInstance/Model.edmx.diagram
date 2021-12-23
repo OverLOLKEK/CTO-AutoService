@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6db21610ddfe4e4e964930f90ba550ba" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Application" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Auto" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Cash_Register" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Check" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Client" Width="1.5" PointX="3" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Detail" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Warehouse" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Work" Width="1.5" PointX="3" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Worker" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Application_Check" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Application_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Application_Detail" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Application_Work" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Application_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Auto_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Cash_Register_Check1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_User_Cash_Register" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Warehouse_Check" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Worker_Check" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Warehouse_Detail" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

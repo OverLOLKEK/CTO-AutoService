@@ -1,0 +1,33 @@
+﻿<Window x:Class="AutoService.ViewPage.Directory.EditAutoDir"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoService.ViewPage.Directory"
+        mc:Ignorable="d"
+        Title="EditAutoDir" Height="400" Width="600">
+    <Grid>
+        <GroupBox Grid.Column="0" >
+            <StackPanel>
+                <TextBlock Text="Гос. номер"/>
+                <TextBox Text="{Binding GoverNumber}" DataContext="{Binding AutoDir}"/>
+                <TextBlock Text="Модель"/>
+                <TextBox Text="{Binding Model}" DataContext="{Binding AutoDir}"/>
+                <TextBlock Text="Год выпуска"/>
+                <TextBox Text="{Binding YearOfIssue}" DataContext="{Binding AutoDir}"/>
+                <TextBlock Text="VIN"/>
+                <TextBox Text="{Binding VIN}" DataContext="{Binding AutoDir}"/>
+                <TextBlock Text="Пробег"/>
+                <TextBox Text="{Binding Mileage}" DataContext="{Binding AutoDir}"/>
+                <TextBlock Text="Двигатель"/>
+                <TextBox Text="{Binding Engine}" DataContext="{Binding AutoDir}"/>
+                <TextBlock Text="Кузов"/>
+                <TextBox Text="{Binding Body}" DataContext="{Binding AutoDir}"/>
+                <TextBlock Text="Шасси"/>
+                <TextBox Text="{Binding Chassis}" DataContext="{Binding AutoDir}"/>
+
+                <Button Content="Сохранить" Width="160" HorizontalAlignment="Right" Margin="0,10" Command="{Binding SaveAutoDir}"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

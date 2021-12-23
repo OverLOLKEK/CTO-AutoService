@@ -1,0 +1,22 @@
+﻿<Page x:Class="AutoService.ViewPage.Order.TabsOrder"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoService.ViewPage.Order"
+      mc:Ignorable="d" 
+      d:DesignHeight="35" d:DesignWidth="633"
+      Title="TabsOrder">
+    <!--Вкладки для заказа-->
+    <Grid>
+        <GroupBox BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Заказ" Width="100" Height="35" Command="{Binding Order}" Background="White"/>
+                <Button Content="Автомобиль" Width="100" Height="35" Command="{Binding Auto}" Background="White"/>
+                <Button Content="Товары" Width="100" Height="35" Command="{Binding Products}" Background="White"/>
+                <Button Content="Услуга" Width="100" Height="35" Command="{Binding Service}" Background="White"/>
+                <Button Content="Оплата" Width="100" Height="35" Command="{Binding Payment}" Background="White"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Page>

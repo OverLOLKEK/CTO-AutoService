@@ -1,0 +1,19 @@
+﻿<Page x:Class="AutoService.ViewPage.TabsStorage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoService.ViewPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="35" d:DesignWidth="633"
+      Title="TabsStorage">
+<!--Вкладки для склада-->
+    <Grid>
+        <GroupBox BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Приход Склад" Width="200" Height="35" Command="{Binding Coming}" Background="White"/>
+                <Button Content="Расход Склад" Width="200" Height="35" Command="{Binding Consumption}" Background="White"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Page>

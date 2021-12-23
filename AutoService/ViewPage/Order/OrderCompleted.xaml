@@ -1,0 +1,28 @@
+﻿<Page x:Class="AutoService.ViewPage.Order.OrderCompleted"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AutoService.ViewPage.Order"
+      mc:Ignorable="d" 
+      d:DesignHeight="391" d:DesignWidth="633"
+      Title="OrderCompleted">
+    <!--Страница Выполнено-->
+    <Grid>
+        <GroupBox Grid.Column="0">
+            <ListView ItemsSource="{Binding Order}" SelectedItem="{Binding SelectedOrder}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Дата завершения" Width="110" DisplayMemberBinding="{Binding DateOfCompl}"/>
+                        <GridViewColumn Header="Марка автомобиля" Width="120" DisplayMemberBinding="{Binding CarBrandCompl}"/>
+                        <GridViewColumn Header="Фамилия" Width="65" DisplayMemberBinding="{Binding SurnameCompl}"/>
+                        <GridViewColumn Header="Имя" Width="35" DisplayMemberBinding="{Binding NameCompl}"/>
+                        <GridViewColumn Header="Отчество" Width="65" DisplayMemberBinding="{Binding PatronymiCompl}"/>
+                        <GridViewColumn Header="Сумма расхода" Width="94" DisplayMemberBinding="{Binding ExpenAmounCompl}"/>
+                        <GridViewColumn Header="Сумма прихода" Width="94" DisplayMemberBinding="{Binding ReceiAmounCompl}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+    </Grid>
+</Page>

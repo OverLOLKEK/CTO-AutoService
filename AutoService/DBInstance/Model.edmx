@@ -1,0 +1,822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Client" Type="int" />
+          <Property Name="Date_Acceptance" Type="datetime" />
+          <Property Name="Date_Start" Type="datetime" />
+          <Property Name="Date_End" Type="datetime" />
+          <Property Name="Date_Issue" Type="datetime" />
+          <Property Name="Note" Type="varchar" MaxLength="250" />
+          <Property Name="id_Work" Type="int" />
+          <Property Name="id_Detail" Type="int" />
+          <Property Name="id_Сheck" Type="int" />
+          <Property Name="id_Worker" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="VIN" Type="varchar" MaxLength="50" />
+          <Property Name="Engine" Type="varchar" MaxLength="50" />
+          <Property Name="Body" Type="varchar" MaxLength="50" />
+          <Property Name="Chassis" Type="varchar" MaxLength="50" />
+          <Property Name="Year_Issue" Type="date" />
+          <Property Name="Mileage" Type="int" />
+          <Property Name="id_Client" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cash_Register">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Summ" Type="int" Nullable="false" />
+          <Property Name="id_check" Type="int" />
+        </EntityType>
+        <EntityType Name="Check">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="id_From_Whom" Type="int" />
+          <Property Name="id_To_Whom" Type="int" />
+          <Property Name="Type_Transaction" Type="varchar" MaxLength="50" />
+          <Property Name="Sum" Type="int" />
+          <Property Name="id_Document" Type="int" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" />
+          <Property Name="Lastname" Type="varchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="varchar" MaxLength="50" />
+          <Property Name="id_Auto" Type="int" />
+        </EntityType>
+        <EntityType Name="Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Number_Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Sum" Type="int" />
+          <Property Name="Name_Manufacturer" Type="varchar" MaxLength="50" />
+          <Property Name="Vendor_Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type_User" Type="varchar" MaxLength="50" />
+          <Property Name="id_Cash_Register" Type="int" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_Coming" Type="date" />
+          <Property Name="Date_Consumption" Type="date" />
+          <Property Name="id_Detail" Type="int" />
+          <Property Name="id_Check" Type="int" />
+          <Property Name="Type_Operation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Number" Type="int" />
+          <Property Name="Norm" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="Sum" Type="int" />
+          <Property Name="id_Worker" Type="int" />
+          <Property Name="Retention" Type="int" />
+          <Property Name="Date_End" Type="datetime" />
+          <Property Name="Type_Operation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="Telephone" Type="int" />
+          <Property Name="Score" Type="int" />
+          <Property Name="id_Check" Type="int" />
+        </EntityType>
+        <Association Name="FK_Application_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Сheck" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Detail">
+          <End Role="Detail" Type="Self.Detail" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Detail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Work">
+          <End Role="Work" Type="Self.Work" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Work">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Auto_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Auto">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cash_Register_Check1">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Cash_Register" Type="Self.Cash_Register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cash_Register">
+              <PropertyRef Name="id_check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Cash_Register">
+          <End Role="Cash_Register" Type="Self.Cash_Register" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cash_Register">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id_Cash_Register" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="id_Check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Detail">
+          <End Role="Detail" Type="Self.Detail" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="id_Detail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="id_Check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cash_Register" EntityType="Self.Cash_Register" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Check" EntityType="Self.Check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detail" EntityType="Self.Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Application_Check" Association="Self.FK_Application_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Client" Association="Self.FK_Application_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Detail" Association="Self.FK_Application_Detail">
+            <End Role="Detail" EntitySet="Detail" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Work" Association="Self.FK_Application_Work">
+            <End Role="Work" EntitySet="Work" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Worker" Association="Self.FK_Application_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Auto_Client" Association="Self.FK_Auto_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Auto" EntitySet="Auto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cash_Register_Check1" Association="Self.FK_Cash_Register_Check1">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Cash_Register" EntitySet="Cash_Register" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Cash_Register" Association="Self.FK_User_Cash_Register">
+            <End Role="Cash_Register" EntitySet="Cash_Register" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Check" Association="Self.FK_Warehouse_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Detail" Association="Self.FK_Warehouse_Detail">
+            <End Role="Detail" EntitySet="Detail" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Check" Association="Self.FK_Worker_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Client" Type="Int32" />
+          <Property Name="Date_Acceptance" Type="DateTime" Precision="3" />
+          <Property Name="Date_Start" Type="DateTime" Precision="3" />
+          <Property Name="Date_End" Type="DateTime" Precision="3" />
+          <Property Name="Date_Issue" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="id_Work" Type="Int32" />
+          <Property Name="id_Detail" Type="Int32" />
+          <Property Name="id_Сheck" Type="Int32" />
+          <Property Name="id_Worker" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Application_Check" FromRole="Application" ToRole="Check" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Application_Client" FromRole="Application" ToRole="Client" />
+          <NavigationProperty Name="Detail" Relationship="Self.FK_Application_Detail" FromRole="Application" ToRole="Detail" />
+          <NavigationProperty Name="Work" Relationship="Self.FK_Application_Work" FromRole="Application" ToRole="Work" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_Application_Worker" FromRole="Application" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Engine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Body" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Chassis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Year_Issue" Type="DateTime" Precision="0" />
+          <Property Name="Mileage" Type="Int32" />
+          <Property Name="id_Client" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Auto_Client" FromRole="Auto" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Cash_Register">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Summ" Type="Int32" Nullable="false" />
+          <Property Name="id_check" Type="Int32" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Cash_Register_Check1" FromRole="Cash_Register" ToRole="Check" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Cash_Register" FromRole="Cash_Register" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Check">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="id_From_Whom" Type="Int32" />
+          <Property Name="id_To_Whom" Type="Int32" />
+          <Property Name="Type_Transaction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sum" Type="Int32" />
+          <Property Name="id_Document" Type="Int32" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Check" FromRole="Check" ToRole="Application" />
+          <NavigationProperty Name="Cash_Register" Relationship="Self.FK_Cash_Register_Check1" FromRole="Check" ToRole="Cash_Register" />
+          <NavigationProperty Name="Warehouse" Relationship="Self.FK_Warehouse_Check" FromRole="Check" ToRole="Warehouse" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_Worker_Check" FromRole="Check" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Auto" Type="Int32" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Client" FromRole="Client" ToRole="Application" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK_Auto_Client" FromRole="Client" ToRole="Auto" />
+        </EntityType>
+        <EntityType Name="Detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Number_Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Sum" Type="Int32" />
+          <Property Name="Name_Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vendor_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Detail" FromRole="Detail" ToRole="Application" />
+          <NavigationProperty Name="Warehouse" Relationship="Self.FK_Warehouse_Detail" FromRole="Detail" ToRole="Warehouse" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Cash_Register" Type="Int32" />
+          <NavigationProperty Name="Cash_Register" Relationship="Self.FK_User_Cash_Register" FromRole="User" ToRole="Cash_Register" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date_Coming" Type="DateTime" Precision="0" />
+          <Property Name="Date_Consumption" Type="DateTime" Precision="0" />
+          <Property Name="id_Detail" Type="Int32" />
+          <Property Name="id_Check" Type="Int32" />
+          <Property Name="Type_Operation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Warehouse_Check" FromRole="Warehouse" ToRole="Check" />
+          <NavigationProperty Name="Detail" Relationship="Self.FK_Warehouse_Detail" FromRole="Warehouse" ToRole="Detail" />
+        </EntityType>
+        <EntityType Name="Work">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="Norm" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="Sum" Type="Int32" />
+          <Property Name="id_Worker" Type="Int32" />
+          <Property Name="Retention" Type="Int32" />
+          <Property Name="Date_End" Type="DateTime" Precision="3" />
+          <Property Name="Type_Operation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Work" FromRole="Work" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="Int32" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="id_Check" Type="Int32" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Worker" FromRole="Worker" ToRole="Application" />
+          <NavigationProperty Name="Check" Relationship="Self.FK_Worker_Check" FromRole="Worker" ToRole="Check" />
+        </EntityType>
+        <Association Name="FK_Application_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Сheck" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Detail">
+          <End Role="Detail" Type="Self.Detail" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Detail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Work">
+          <End Role="Work" Type="Self.Work" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Work">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Work" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="id_Worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Auto_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Auto">
+              <PropertyRef Name="id_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cash_Register_Check1">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Cash_Register" Type="Self.Cash_Register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cash_Register">
+              <PropertyRef Name="id_check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Cash_Register">
+          <End Role="Cash_Register" Type="Self.Cash_Register" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cash_Register">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id_Cash_Register" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="id_Check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Check">
+          <End Role="Check" Type="Self.Check" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Check">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="id_Check" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Warehouse_Detail">
+          <End Role="Detail" Type="Self.Detail" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detail">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="id_Detail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Application" EntityType="Self.Application" />
+          <EntitySet Name="Auto" EntityType="Self.Auto" />
+          <EntitySet Name="Cash_Register" EntityType="Self.Cash_Register" />
+          <EntitySet Name="Check" EntityType="Self.Check" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Detail" EntityType="Self.Detail" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+          <EntitySet Name="Work" EntityType="Self.Work" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" />
+          <AssociationSet Name="FK_Application_Check" Association="Self.FK_Application_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Client" Association="Self.FK_Application_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Detail" Association="Self.FK_Application_Detail">
+            <End Role="Detail" EntitySet="Detail" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Work" Association="Self.FK_Application_Work">
+            <End Role="Work" EntitySet="Work" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_Worker" Association="Self.FK_Application_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Auto_Client" Association="Self.FK_Auto_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Auto" EntitySet="Auto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cash_Register_Check1" Association="Self.FK_Cash_Register_Check1">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Cash_Register" EntitySet="Cash_Register" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Cash_Register" Association="Self.FK_User_Cash_Register">
+            <End Role="Cash_Register" EntitySet="Cash_Register" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Check" Association="Self.FK_Warehouse_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Check" Association="Self.FK_Worker_Check">
+            <End Role="Check" EntitySet="Check" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Detail" Association="Self.FK_Warehouse_Detail">
+            <End Role="Detail" EntitySet="Detail" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="Model.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Client" ColumnName="id_Client" />
+                <ScalarProperty Name="Date_Acceptance" ColumnName="Date_Acceptance" />
+                <ScalarProperty Name="Date_Start" ColumnName="Date_Start" />
+                <ScalarProperty Name="Date_End" ColumnName="Date_End" />
+                <ScalarProperty Name="Date_Issue" ColumnName="Date_Issue" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="id_Work" ColumnName="id_Work" />
+                <ScalarProperty Name="id_Detail" ColumnName="id_Detail" />
+                <ScalarProperty Name="id_Сheck" ColumnName="id_Сheck" />
+                <ScalarProperty Name="id_Worker" ColumnName="id_Worker" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auto">
+            <EntityTypeMapping TypeName="Model.Auto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Chassis" ColumnName="Chassis" />
+                <ScalarProperty Name="Year_Issue" ColumnName="Year_Issue" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="id_Client" ColumnName="id_Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cash_Register">
+            <EntityTypeMapping TypeName="Model.Cash_Register">
+              <MappingFragment StoreEntitySet="Cash_Register">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="id_check" ColumnName="id_check" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Check">
+            <EntityTypeMapping TypeName="Model.Check">
+              <MappingFragment StoreEntitySet="Check">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="id_From_Whom" ColumnName="id_From_Whom" />
+                <ScalarProperty Name="id_To_Whom" ColumnName="id_To_Whom" />
+                <ScalarProperty Name="Type_Transaction" ColumnName="Type_Transaction" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="id_Document" ColumnName="id_Document" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="Model.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="id_Auto" ColumnName="id_Auto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detail">
+            <EntityTypeMapping TypeName="Model.Detail">
+              <MappingFragment StoreEntitySet="Detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number_Manufacturer" ColumnName="Number_Manufacturer" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Name_Manufacturer" ColumnName="Name_Manufacturer" />
+                <ScalarProperty Name="Vendor_Code" ColumnName="Vendor_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type_User" ColumnName="Type_User" />
+                <ScalarProperty Name="id_Cash_Register" ColumnName="id_Cash_Register" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouse">
+            <EntityTypeMapping TypeName="Model.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Date_Coming" ColumnName="Date_Coming" />
+                <ScalarProperty Name="Date_Consumption" ColumnName="Date_Consumption" />
+                <ScalarProperty Name="id_Detail" ColumnName="id_Detail" />
+                <ScalarProperty Name="id_Check" ColumnName="id_Check" />
+                <ScalarProperty Name="Type_Operation" ColumnName="Type_Operation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Work">
+            <EntityTypeMapping TypeName="Model.Work">
+              <MappingFragment StoreEntitySet="Work">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Norm" ColumnName="Norm" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="id_Worker" ColumnName="id_Worker" />
+                <ScalarProperty Name="Retention" ColumnName="Retention" />
+                <ScalarProperty Name="Date_End" ColumnName="Date_End" />
+                <ScalarProperty Name="Type_Operation" ColumnName="Type_Operation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Worker">
+            <EntityTypeMapping TypeName="Model.Worker">
+              <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="id_Check" ColumnName="id_Check" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

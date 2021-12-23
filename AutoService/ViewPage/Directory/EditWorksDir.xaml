@@ -1,0 +1,27 @@
+﻿<Window x:Class="AutoService.ViewPage.Directory.EditWorksDir"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoService.ViewPage.Directory"
+        mc:Ignorable="d"
+        Title="EditWorksDir" Height="280" Width="600">
+    <Grid>
+        <GroupBox Grid.Column="0" >
+            <StackPanel>
+                <TextBlock Text="Номер работы"/>
+                <TextBox Text="{Binding WorkNumber}" DataContext="{Binding WorksDir}"/>
+                <TextBlock Text="Наименование"/>
+                <TextBox Text="{Binding NameOfWork}" DataContext="{Binding WorksDir}"/>
+                <TextBlock Text="Кол-во"/>
+                <TextBox Text="{Binding Number}" DataContext="{Binding WorksDir}"/>
+                <TextBlock Text="Цена"/>
+                <TextBox Text="{Binding Price}" DataContext="{Binding WorksDir}"/>
+                <TextBlock Text="Скидка"/>
+                <TextBox Text="{Binding Discount}" DataContext="{Binding WorksDir}"/>
+
+                <Button Content="Сохранить" Width="160" HorizontalAlignment="Right" Margin="0,10" Command="{Binding SaveAutoDir}"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="AutoService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoService"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
+    <Grid Background="#4C7AA2CC">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+       
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="Заказы:" FontSize="20" />
+            <Button Content="В процессе" FontSize="24" BorderBrush="White"
+                    Background="#FF6EA2D5" Foreground="#FF040404" Command="{Binding GoOrderInProg}"/>
+            <Button Content="Выполнены" FontSize="24" BorderBrush="White"
+                    Background="#FF6EA2D5" Foreground="#FF040404" Command="{Binding GoOrderCompl}"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Text="Касса:" FontSize="20" />
+            <Button Content="Входные расчеты" FontSize="24" BorderBrush="White"
+                    Background="#FF6EA2D5" Command="{Binding GoInCachBox}"/>
+            <Button Content="Выходные расчеты" FontSize="24" BorderBrush="White"
+                    Background="#FF6EA2D5" Command="{Binding GoOutCachBox}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0">
+            <TextBlock Text="Склад:" FontSize="20" />
+            <Button Content="Вход" FontSize="24" BorderBrush="White"
+                    Background="#FF6EA2D5" Command="{Binding GoInStorage}"/>
+            <Button Content="Выход" FontSize="24" BorderBrush="White"
+                    Background="#FF6EA2D5" Command="{Binding GoOutStorage}"/>
+        </StackPanel>
+
+        <Menu Background="#FF6EA2D5">
+            <MenuItem Header="Справочник" Width="220" Height="52" FontSize="24">
+                <!--<ComboBox Text="Выбрать элемент" ItemsSource="{Binding Directory}" SelectedItem="{Binding SelectedElement}"/>-->
+                <Button Content="Клиенты"  Command="{Binding GoClient}" Background="#FFFAF2F2"/>
+                <Button Content="Автомобили" Command="{Binding GoAuto}" Background="#FFFAF2F2"/>
+                <Button Content="Список работ" Command="{Binding GoWorks}" Background="#FFFAF2F2"/>
+                <Button Content="Список товаров" Command="{Binding GoProducts}" Background="#FFFAF2F2"/>
+            </MenuItem>
+        </Menu>
+
+        <ListBox Margin="-567,-79,567,79">
+        <ListBox.ContextMenu>
+            <ContextMenu>
+                    <MenuItem Header="Создать новый заказ" Command=""/>
+                    <MenuItem Header="Создать приход денег" Command=""/>
+                    <MenuItem Header="" Command=""/>
+                </ContextMenu>
+        </ListBox.ContextMenu>
+        </ListBox>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Frame Name="secondframe" NavigationUIVisibility="Hidden"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
+            <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        </StackPanel>
+    </Grid>
+</Window>
+
