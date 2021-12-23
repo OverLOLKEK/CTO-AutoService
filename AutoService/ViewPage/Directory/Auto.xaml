@@ -9,7 +9,7 @@
       Title="Auto">
     <Grid>
         <GroupBox Grid.Column="0">
-            <ListView ItemsSource="{Binding AutoDir}" SelectedItem="{Binding SelectedAutoDir}">
+            <ListView ItemsSource="{Binding Autos}" SelectedItem="{Binding SelectedAuto}">
                 <!--Изменить оба Binding-->
                 <ListView.View>
                     <GridView>

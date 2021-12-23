@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoService.mvvm;
+using AutoService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,11 @@ namespace AutoService.ViewPage.Directory
     /// </summary>
     public partial class Clients : Page
     {
+       // CustomCommand GOClient { get; set; }
         public Clients()
         {
             InitializeComponent();
+            DataContext = new ClientVM();           
         }
     }
 }

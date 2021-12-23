@@ -12,10 +12,13 @@ namespace AutoService.mvvm
     {
         private static iTextSharp.text.Font helvetica;
         private static BaseFont helveticaBase;
-
-        static void Main(string[] args)
+        //private ObservableCollection<Auto> Autos;
+       // string ModelAuto;
+         //ModelAuto.WriteLine(ToString.Auto.Model;
+        static void PDF(string[] args)
         {
             ;
+
             var document = new iTextSharp.text.Document();
             using (var writer = PdfWriter.GetInstance(document, new FileStream("result.pdf", FileMode.Create)))
 
@@ -30,6 +33,7 @@ namespace AutoService.mvvm
                 writer.DirectContent.BeginText();
                 writer.DirectContent.SetFontAndSize(helveticaBase, 12f);
                 writer.DirectContent.ShowTextAligned(iTextSharp.text.Element.ALIGN_LEFT, "Hello world!", 35, 766, 0);
+                //writer.DirectContent.ShowTextAligned(iTextSharp.text.Element.ALIGN_LEFT, Autos);
                 writer.DirectContent.EndText();
 
                 document.Close();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace AutoService.ViewPage.Order
         public OrderCompleted()
         {
             InitializeComponent();
+            DataContext = new TabsOrderVM();
         }
     }
 }

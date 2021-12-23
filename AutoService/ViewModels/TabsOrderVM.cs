@@ -29,6 +29,7 @@ namespace AutoService.ViewModels
         public CustomCommand Products { get; set; }
         public CustomCommand Service { get; set; }
         public CustomCommand Payment { get; set; }
+        public CustomCommand RemoveOrder { get; set; }
         public CustomCommand AddApplication { get; set; }
         public CustomCommand SaveApplication { get; set; }
         
@@ -53,12 +54,14 @@ namespace AutoService.ViewModels
             Workers = new ObservableCollection<Worker>(entities.Workers);
             Details = new ObservableCollection<Detail>(entities.Details);
             Checks = new ObservableCollection<Check>(entities.Checks);
-            AddApplication = new CustomCommand(() => {
-                var order = new Application { Status = "Не начат", Note="", Date_Acceptance=DateTime.Today };
+            AddApplication = new CustomCommand(() =>
+            {
+                var order = new Application { Status = "Не начат", Note = "", Date_Acceptance = DateTime.Today };
                 entities.Applications.Add(order);
                 SelectedApplication = order;
             });
-            SaveApplication = new CustomCommand(() => {
+            SaveApplication = new CustomCommand(() =>
+            {
                 try
                 {
                     entities.SaveChanges();
@@ -69,12 +72,26 @@ namespace AutoService.ViewModels
                     System.Windows.MessageBox.Show(ex.Message);
                 }
             });
+
+            RemoveOrder = new CustomCommand(() =>
+                {
+                    if (SelectedApplication == null)
+                    {
+                        System.Windows.MessageBox.Show("Для удаления клиента нужно его выбрать в списке");
+                        return;
+                    }
+
+                    DB.GetDB().Applications.Remove(SelectedApplication);
+                    DB.GetDB().SaveChanges();
+                    Applications.Remove(SelectedApplication);
+
+                });
         }
 
         private void LoadApplications()
         {
             Applications = new ObservableCollection<Application>(entities.Applications);
-            SignalChanged("Groups");
+            SignalChanged("Applications");
         }
         
         void SignalChanged([CallerMemberName] string prop = null) =>

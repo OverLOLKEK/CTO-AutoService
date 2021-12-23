@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace AutoService.ViewModels
 {
-    internal class AutoVM : BaseViewModel
+     class AutoVM : BaseViewModel
     {
-        private ObservableCollection<Auto> auto;
-        public ObservableCollection<Auto> Autos { get => auto; set { auto = value; SignalChanged(); } }
+        Entities entities;
+        public ObservableCollection<Auto> Autos { get; set; }
         public CustomCommand AddAuto { get; set; }
         public CustomCommand SaveAuto { get; set; }
 
@@ -41,7 +41,7 @@ namespace AutoService.ViewModels
             {
                 var auto = new Auto { Model = "Модель", VIN = "VIN номер", Engine = "Двигатель", Body = "Двигатель", Chassis = "Шасси" };
                 entities.Autos.Add(auto);
-                Autos.Add(auto);
+               // Autos.Add(auto);
                 SelectedAuto = auto;
             });
             SaveAuto = new CustomCommand(() =>
@@ -76,7 +76,7 @@ namespace AutoService.ViewModels
         {
             var entities = DB.GetDB();
             Autos = new ObservableCollection<Auto>(entities.Autos);
-            SignalChanged("Autos");
+            SignalChanged("Auto");
         }
     }
 }

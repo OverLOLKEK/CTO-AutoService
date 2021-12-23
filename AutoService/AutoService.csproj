@@ -117,6 +117,8 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="mvvm\PDF.cs" />
+    <Compile Include="ViewModels\AutoVM.cs" />
+    <Compile Include="ViewModels\ClientVM.cs" />
     <Compile Include="ViewModels\ComingCashboxVM.cs" />
     <Compile Include="ViewModels\ComingStorageVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />

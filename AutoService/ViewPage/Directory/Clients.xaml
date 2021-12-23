@@ -9,19 +9,19 @@
       Title="Clients">
     <Grid>
         <GroupBox Grid.Column="0">
-            <ListView ItemsSource="{Binding ClientsDir}" SelectedItem="{Binding SelectedClientsDir}">
+            <ListView ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Фамилия" Width="65" DisplayMemberBinding="{Binding Surname}"/>
-                        <GridViewColumn Header="Имя" Width="35" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Отчество" Width="65" DisplayMemberBinding="{Binding Patronymi}"/>
-                        <GridViewColumn Header="Номер телефона" Width="120" DisplayMemberBinding="{Binding TeleNumb}"/>
+                        <GridViewColumn Header="Фамилия" Width="65" DisplayMemberBinding="{Binding SelectedClient.Firstname}"/>
+                        <GridViewColumn Header="Имя" Width="35" DisplayMemberBinding="{Binding SelectedClient.Lastname}"/>
+                        <GridViewColumn Header="Отчество" Width="65" DisplayMemberBinding="{Binding SelectedClient.Patronymic}"/>
+                        <GridViewColumn Header="Номер телефона" Width="120" DisplayMemberBinding="{Binding SelectedClient.Telephone}"/>
                     </GridView>
                 </ListView.View>
 
                 <ListView.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Добавить клиента" Command="{Binding AddClient}"/>
+                        <MenuItem Header="Добавить клиента" Command="{Binding GOClient}"/>
                         <MenuItem Header="Редактировать клиента" Command="{Binding EditClient}"/>
                         <MenuItem Header="Удалить клиента" Command="{Binding RemoveClient}"/>
                     </ContextMenu>

@@ -3,61 +3,51 @@ using AutoService.mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoService.ViewModels
 {
-    internal class ClientVM : BaseViewModel
+     class ClientVM : BaseViewModel, INotifyPropertyChanged
     {
-        private ObservableCollection<Client> client;
+        Entities entities;
+        private Client selectedApplication;
 
-        public ObservableCollection<Client> Client { get => client; set { client = value; SignalChanged(); } }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Client> Clients { get; set; }
         public ObservableCollection<Auto> Autos { get; set; }
-        public CustomCommand AddClient { get; set; }
+        public CustomCommand RemoveClients { get; set; }
+        public CustomCommand AddClients { get; set; }
+        public CustomCommand SaveClients { get; set; }
 
-        public Auto SelectedAuto { get; set; }
 
-        public List<Auto> Autoes { get; set; }
-        public CustomCommand RemoveClient { get; set; }
-        public CustomCommand SaveClient { get; set; }
-
-        private Client selectedClient;
-
-        public Client SelectedClient
+        public Client SelectedApplication
         {
-            get => selectedClient;
+            get => selectedApplication;
             set
             {
-                selectedClient = value;
+                selectedApplication = value;
                 SignalChanged();
             }
         }
+
         public ClientVM()
         {
-
-            var entities = DB.GetDB();
+            entities = DB.GetDB();
             LoadClients();
-            Client = new ObservableCollection<Client>(entities.Clients);
-            Autoes = entities.Autos.ToList();
-            AddClient = new CustomCommand(() =>
+            Clients = new ObservableCollection<Client>(entities.Clients);
+            Autos = new ObservableCollection<Auto>(entities.Autos);
+            AddClients = new CustomCommand(() =>
             {
-
-
-                var client = new Client { Firstname = "Имя", Lastname = "Фамилия", Patronymic = "Отчество"/*, Auto = SelectedAuto, id_Auto = SelectedAuto.id */};
+                var client = new Client { Firstname = "Иван", Lastname = "Иванов"};
                 entities.Clients.Add(client);
-                Client.Add(client);
-                SelectedClient = client;
+                SelectedApplication = client;
             });
-            SaveClient = new CustomCommand(() =>
+            SaveClients = new CustomCommand(() =>
             {
-                //if (SelectedAuto == null)
-                //{
-                //    MessageBox.Show("Не выбрано авто");
-                //    return;
-                //}
-
                 try
                 {
                     entities.SaveChanges();
@@ -69,27 +59,28 @@ namespace AutoService.ViewModels
                 }
             });
 
-
-            RemoveClient = new CustomCommand(() =>
+            RemoveClients = new CustomCommand(() =>
             {
-                if (SelectedClient == null)
+                if (SelectedApplication == null)
                 {
                     System.Windows.MessageBox.Show("Для удаления клиента нужно его выбрать в списке");
                     return;
                 }
 
-                DB.GetDB().Clients.Remove(SelectedClient);
+                DB.GetDB().Clients.Remove(SelectedApplication);
                 DB.GetDB().SaveChanges();
-                Client.Remove(SelectedClient);
+                Clients.Remove(SelectedApplication);
 
             });
-
         }
+
         private void LoadClients()
         {
-            var entities = DB.GetDB();
-            Client = new ObservableCollection<Client>(entities.Clients);
-            SignalChanged("Client");
+            Clients = new ObservableCollection<Client>(entities.Clients);
+            SignalChanged("Clients");
         }
+
+        void SignalChanged([CallerMemberName] string prop = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
     }
 }
