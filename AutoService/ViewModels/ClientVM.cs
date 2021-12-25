@@ -14,7 +14,7 @@ namespace AutoService.ViewModels
      class ClientVM : BaseViewModel, INotifyPropertyChanged
     {
         Entities entities;
-        private Client selectedApplication;
+        private Client selectedClient;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<Client> Clients { get; set; }
@@ -24,12 +24,12 @@ namespace AutoService.ViewModels
         public CustomCommand SaveClients { get; set; }
 
 
-        public Client SelectedApplication
+        public Client SelectedClient
         {
-            get => selectedApplication;
+            get => selectedClient;
             set
             {
-                selectedApplication = value;
+                selectedClient = value;
                 SignalChanged();
             }
         }
@@ -44,7 +44,7 @@ namespace AutoService.ViewModels
             {
                 var client = new Client { Firstname = "Иван", Lastname = "Иванов"};
                 entities.Clients.Add(client);
-                SelectedApplication = client;
+                SelectedClient = client;
             });
             SaveClients = new CustomCommand(() =>
             {
@@ -61,15 +61,15 @@ namespace AutoService.ViewModels
 
             RemoveClients = new CustomCommand(() =>
             {
-                if (SelectedApplication == null)
+                if (SelectedClient == null)
                 {
                     System.Windows.MessageBox.Show("Для удаления клиента нужно его выбрать в списке");
                     return;
                 }
 
-                DB.GetDB().Clients.Remove(SelectedApplication);
+                DB.GetDB().Clients.Remove(SelectedClient);
                 DB.GetDB().SaveChanges();
-                Clients.Remove(SelectedApplication);
+                Clients.Remove(SelectedClient);
 
             });
         }
