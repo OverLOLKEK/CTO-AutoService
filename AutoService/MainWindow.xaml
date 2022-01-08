@@ -49,13 +49,14 @@
             <MenuItem Header="Справочник" Width="220" Height="52" FontSize="24">
                 <!--<ComboBox Text="Выбрать элемент" ItemsSource="{Binding Directory}" SelectedItem="{Binding SelectedElement}"/>-->
                 <Button Content="Клиенты"  Command="{Binding GoClient}" Background="#FFFAF2F2"/>
+                <Button Content="Добавить клиентов" Command="{Binding AddClients}" Background="#FFFAF2F2"/>
                 <Button Content="Автомобили" Command="{Binding GoAuto}" Background="#FFFAF2F2"/>
                 <Button Content="Список работ" Command="{Binding GoWorks}" Background="#FFFAF2F2"/>
                 <Button Content="Список товаров" Command="{Binding GoProducts}" Background="#FFFAF2F2"/>
             </MenuItem>
         </Menu>
 
-        <ListBox Margin="-567,-79,567,79">
+        <ListBox Margin="360,78,0,0" Grid.Column="1" Grid.Row="3">
         <ListBox.ContextMenu>
             <ContextMenu>
                     <MenuItem Header="Создать новый заказ" Command=""/>

@@ -21,7 +21,7 @@
 
                 <ListView.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Добавить клиента" Command="{Binding GOClient}"/>
+                        <MenuItem Header="Добавить клиента" Command="{Binding AddClients}"/>
                         <MenuItem Header="Редактировать клиента" Command="{Binding EditClient}"/>
                         <MenuItem Header="Удалить клиента" Command="{Binding RemoveClient}"/>
                     </ContextMenu>

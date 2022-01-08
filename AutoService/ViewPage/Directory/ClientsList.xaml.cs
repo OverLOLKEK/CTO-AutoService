@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoService.mvvm;
+using AutoService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,15 @@ using System.Windows.Shapes;
 namespace AutoService.ViewPage.Directory
 {
     /// <summary>
-    /// Логика взаимодействия для Auto.xaml
+    /// Логика взаимодействия для Clients.xaml
     /// </summary>
-    public partial class Auto : Page
+    public partial class Clients : Page
     {
-        public Auto()
+       // CustomCommand GOClient { get; set; }
+        public Clients()
         {
             InitializeComponent();
+           // DataContext = new ClientVM();           
         }
     }
 }

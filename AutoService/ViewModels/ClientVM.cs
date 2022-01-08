@@ -22,6 +22,7 @@ namespace AutoService.ViewModels
         public CustomCommand RemoveClients { get; set; }
         public CustomCommand AddClients { get; set; }
         public CustomCommand SaveClients { get; set; }
+        public CustomCommand GOClient { get; set; }
 
 
         public Client SelectedClient
@@ -36,7 +37,7 @@ namespace AutoService.ViewModels
 
         public ClientVM()
         {
-            entities = DB.GetDB();
+           // GOClient = new CustomCommand(() => { new EditClientsDir().Show(); });
             LoadClients();
             Clients = new ObservableCollection<Client>(entities.Clients);
             Autos = new ObservableCollection<Auto>(entities.Autos);

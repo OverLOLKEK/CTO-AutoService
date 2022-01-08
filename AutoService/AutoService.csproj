@@ -146,11 +146,11 @@
     <Compile Include="ViewPage\CreationNewOrder\WorksInNewOrder.xaml.cs">
       <DependentUpon>WorksInNewOrder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\Directory\Auto.xaml.cs">
-      <DependentUpon>Auto.xaml</DependentUpon>
+    <Compile Include="ViewPage\Directory\AutoList.xaml.cs">
+      <DependentUpon>AutoList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\Directory\Clients.xaml.cs">
-      <DependentUpon>Clients.xaml</DependentUpon>
+    <Compile Include="ViewPage\Directory\ClientsList.xaml.cs">
+      <DependentUpon>ClientsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\Directory\EditAutoDir.xaml.cs">
       <DependentUpon>EditAutoDir.xaml</DependentUpon>
@@ -158,17 +158,17 @@
     <Compile Include="ViewPage\Directory\EditClientsDir.xaml.cs">
       <DependentUpon>EditClientsDir.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\Directory\EditProdDir.xaml.cs">
+    <Compile Include="ViewPage\Directory\EditDir\EditProdDir.xaml.cs">
       <DependentUpon>EditProdDir.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\Directory\EditWorksDir.xaml.cs">
+    <Compile Include="ViewPage\Directory\EditDir\EditWorksDir.xaml.cs">
       <DependentUpon>EditWorksDir.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\Directory\Products.xaml.cs">
-      <DependentUpon>Products.xaml</DependentUpon>
+    <Compile Include="ViewPage\Directory\ProductsList.xaml.cs">
+      <DependentUpon>ProductsList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewPage\Directory\Works.xaml.cs">
-      <DependentUpon>Works.xaml</DependentUpon>
+    <Compile Include="ViewPage\Directory\WorksList.xaml.cs">
+      <DependentUpon>WorksList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewPage\CreationNewOrder\AutoInNewOrder.xaml.cs">
       <DependentUpon>AutoInNewOrder.xaml</DependentUpon>
@@ -237,11 +237,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewPage\Directory\Auto.xaml">
+    <Page Include="ViewPage\Directory\AutoList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewPage\Directory\Clients.xaml">
+    <Page Include="ViewPage\Directory\ClientsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,19 +253,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewPage\Directory\EditProdDir.xaml">
+    <Page Include="ViewPage\Directory\EditDir\EditProdDir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewPage\Directory\EditWorksDir.xaml">
+    <Page Include="ViewPage\Directory\EditDir\EditWorksDir.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewPage\Directory\Products.xaml">
+    <Page Include="ViewPage\Directory\ProductsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewPage\Directory\Works.xaml">
+    <Page Include="ViewPage\Directory\WorksList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

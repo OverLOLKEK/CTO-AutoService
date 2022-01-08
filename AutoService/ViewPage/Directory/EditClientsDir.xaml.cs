@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoService.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace AutoService.ViewPage.Directory
         public EditClientsDir()
         {
             InitializeComponent();
+            DataContext = new ClientVM();
         }
     }
 }
