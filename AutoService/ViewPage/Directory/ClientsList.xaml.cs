@@ -20,13 +20,13 @@ namespace AutoService.ViewPage.Directory
     /// <summary>
     /// Логика взаимодействия для Clients.xaml
     /// </summary>
-    public partial class Clients : Page
+    public partial class ClientList : Page
     {
        // CustomCommand GOClient { get; set; }
-        public Clients()
+        public ClientList()
         {
-            InitializeComponent();
-           // DataContext = new ClientVM();           
+           InitializeComponent();
+            DataContext = new ClientVM();           
         }
     }
 }

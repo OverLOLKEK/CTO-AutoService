@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace AutoService.ViewPage.Directory
 {
     /// <summary>
-    /// Логика взаимодействия для Auto.xaml
+    /// Логика взаимодействия для AutoList.xaml
     /// </summary>
-    public partial class Auto: Page
+    public partial class AutoList : Page
     {
-        public Auto()
+        public AutoList()
         {
             InitializeComponent();
             DataContext = new AutoVM();
-        }       
+        }
     }
 }

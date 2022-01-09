@@ -10,15 +10,16 @@
         <GroupBox Grid.Column="0" >
             <StackPanel>
                 <TextBlock Text="Фамилия"/>
-                <TextBox Text="{Binding Surname}" DataContext="{Binding ClientsDir}"/>
+                <TextBox Text="{Binding SelectedClient.Firstname}"/>
                 <TextBlock Text="Имя"/>
-                <TextBox Text="{Binding Name}" DataContext="{Binding ClientsDir}"/>
+                <TextBox Text="{Binding SelectedClient.Lastname}" />
                 <TextBlock Text="Отчество"/>
-                <TextBox Text="{Binding Patronymi}" DataContext="{Binding ClientsDir}"/>
+                <TextBox Text="{Binding SelectedClient.Patronymic}"/>
                 <TextBlock Text="Номер телефона"/>
-                <TextBox Text="{Binding TeleNumb}" DataContext="{Binding ClientsDir}"/>
+                <TextBox Text="{Binding SelectedClient.Telephone}"/>
 
                 <Button Content="Сохранить" Width="160" HorizontalAlignment="Right" Margin="0,10" Command="{Binding SaveClients}"/>
+                <Button Content="+" Width="160" HorizontalAlignment="Right" Margin="0,10" Command="{Binding AddClients}"/>
             </StackPanel>
         </GroupBox>
     </Grid>

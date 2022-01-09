@@ -9,15 +9,15 @@ namespace AutoService
 {
     public class DB
     {
-        static Entities connection;
+        static Entities  entities;
         static object objectLock = new object();
         public static Entities GetDB()
         {
             lock (objectLock)
             {
-                if (connection == null)
-                    connection = new Entities();
-                return connection;
+                if (entities == null)
+                    entities = new Entities();
+                return entities;
             }
         }
     }

@@ -19,7 +19,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-       
+
 
         <StackPanel Grid.Row="1" Grid.Column="0">
             <TextBlock Text="Заказы:" FontSize="20" />
@@ -28,7 +28,7 @@
             <Button Content="Выполнены" FontSize="24" BorderBrush="White"
                     Background="#FF6EA2D5" Foreground="#FF040404" Command="{Binding GoOrderCompl}"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock Text="Касса:" FontSize="20" />
             <Button Content="Входные расчеты" FontSize="24" BorderBrush="White"
@@ -56,14 +56,14 @@
             </MenuItem>
         </Menu>
 
-        <ListBox Margin="360,78,0,0" Grid.Column="1" Grid.Row="3">
-        <ListBox.ContextMenu>
-            <ContextMenu>
+        <ListBox Margin="-696,-25,696,25">
+            <ListBox.ContextMenu>
+                <ContextMenu>
                     <MenuItem Header="Создать новый заказ" Command=""/>
                     <MenuItem Header="Создать приход денег" Command=""/>
                     <MenuItem Header="" Command=""/>
                 </ContextMenu>
-        </ListBox.ContextMenu>
+            </ListBox.ContextMenu>
         </ListBox>
 
         <StackPanel Grid.Row="0" Grid.Column="1">

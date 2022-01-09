@@ -50,7 +50,7 @@ namespace AutoService.ViewModels
                 SelectedClient = client;
                 GoEditClient = new CustomCommand(() => { new EditClientsDir().Show(); });
             });
-            GoAuto = new CustomCommand(() => { new ViewPage.Directory.Auto(); });
+            GoAuto = new CustomCommand(() => { new Auto(); });
 
             GoInCachBox = new CustomCommand(() =>
             {
@@ -80,7 +80,7 @@ namespace AutoService.ViewModels
             });
             GoClient = new CustomCommand(() =>
             {
-                MainWindow.MainNavigate(new Clients());
+                MainWindow.MainNavigate(new ClientList());
             });
            
             GoWorks = new CustomCommand(() =>

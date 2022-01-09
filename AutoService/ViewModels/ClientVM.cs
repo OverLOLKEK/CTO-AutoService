@@ -1,5 +1,6 @@
 ﻿using AutoService.DBInstance;
 using AutoService.mvvm;
+using AutoService.ViewPage.Directory;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutoService.ViewModels
 {
-     class ClientVM : BaseViewModel, INotifyPropertyChanged
+    internal class ClientVM : INotifyPropertyChanged
     {
         Entities entities;
         private Client selectedClient;
@@ -37,12 +38,14 @@ namespace AutoService.ViewModels
 
         public ClientVM()
         {
-           // GOClient = new CustomCommand(() => { new EditClientsDir().Show(); });
+            GOClient = new CustomCommand(() => { new EditClientsDir().Show(); });
+            entities = DB.GetDB();
             LoadClients();
             Clients = new ObservableCollection<Client>(entities.Clients);
-            Autos = new ObservableCollection<Auto>(entities.Autos);
+            //Autos = new ObservableCollection<Auto>(entities.Autos);
             AddClients = new CustomCommand(() =>
             {
+               // new EditClientsDir().Show();
                 var client = new Client { Firstname = "Иван", Lastname = "Иванов"};
                 entities.Clients.Add(client);
                 SelectedClient = client;
@@ -51,8 +54,10 @@ namespace AutoService.ViewModels
             {
                 try
                 {
+                   
                     entities.SaveChanges();
                     LoadClients();
+                    GOClient = new CustomCommand(() => { new ClientList(); });
                 }
                 catch (Exception ex)
                 {
