@@ -164,6 +164,9 @@
     <Compile Include="ViewPage\Directory\EditDir\EditWorksDir.xaml.cs">
       <DependentUpon>EditWorksDir.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewPage\Directory\PDFCreate.xaml.cs">
+      <DependentUpon>PDFCreate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewPage\Directory\ProductsList.xaml.cs">
       <DependentUpon>ProductsList.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewPage\Directory\EditDir\EditWorksDir.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewPage\Directory\PDFCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

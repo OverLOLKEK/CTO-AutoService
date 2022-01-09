@@ -29,28 +29,12 @@ namespace AutoService.ViewModels
         public CustomCommand GoWorks { get; set; }
         public CustomCommand GoProducts { get; set; }
         public CustomCommand AddClients { get; set; }
-        public ObservableCollection<Client> Clients { get; set; }
-        Entities entities;
-        private Client selectedClient;
-        public Client SelectedClient
-        {
-            get => selectedClient;
-            set
-            {
-                selectedClient = value;
-                SignalChanged();
-            }
-        }
+        public CustomCommand GoPDF { get; set; }
         public MainVM()
-        {
-            AddClients = new CustomCommand(() =>
-            {
-                var client = new Client { Firstname = "Иван", Lastname = "Иванов" };
-                entities.Clients.Add(client);
-                SelectedClient = client;
-                GoEditClient = new CustomCommand(() => { new EditClientsDir().Show(); });
-            });
+        {            
             GoAuto = new CustomCommand(() => { new Auto(); });
+            
+          //  GoPDF = new CustomCommand(() => { new PDFCreate(); });
 
             GoInCachBox = new CustomCommand(() =>
             {
@@ -90,6 +74,10 @@ namespace AutoService.ViewModels
             GoProducts = new CustomCommand(() =>
             {
                 MainWindow.MainNavigate(new Products());
+            });
+            GoPDF = new CustomCommand(() =>
+            {
+                MainWindow.MainNavigate(new PDFCreate());
             });
         }
     }

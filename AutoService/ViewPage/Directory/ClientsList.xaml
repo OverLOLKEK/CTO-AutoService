@@ -51,6 +51,7 @@
                 Command="{Binding SaveClients}"/>
         <Button Grid.Row="1" Content="Удалить"
                 Command="{Binding RemoveClients}" Grid.ColumnSpan="2" Margin="316,330,0,5"/>
+      
         <!--<ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Добавить клиента" Command="{Binding GOClient}"/>

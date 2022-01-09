@@ -49,7 +49,7 @@
             <MenuItem Header="Справочник" Width="220" Height="52" FontSize="24">
                 <!--<ComboBox Text="Выбрать элемент" ItemsSource="{Binding Directory}" SelectedItem="{Binding SelectedElement}"/>-->
                 <Button Content="Клиенты"  Command="{Binding GoClient}" Background="#FFFAF2F2"/>
-                <Button Content="Добавить клиентов" Command="{Binding AddClients}" Background="#FFFAF2F2"/>
+                <Button Content="PDF" Command="{Binding GoPDF}" Background="#FFFAF2F2"/>
                 <Button Content="Автомобили" Command="{Binding GoAuto}" Background="#FFFAF2F2"/>
                 <Button Content="Список работ" Command="{Binding GoWorks}" Background="#FFFAF2F2"/>
                 <Button Content="Список товаров" Command="{Binding GoProducts}" Background="#FFFAF2F2"/>

@@ -1,5 +1,4 @@
 ﻿using AutoService.mvvm;
-using AutoService.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,16 +17,14 @@ using System.Windows.Shapes;
 namespace AutoService.ViewPage.Directory
 {
     /// <summary>
-    /// Логика взаимодействия для Clients.xaml
+    /// Логика взаимодействия для PDFCreate.xaml
     /// </summary>
-    public partial class ClientList : Page
+    public partial class PDFCreate : Page
     {
-       // CustomCommand GOClient { get; set; }
-        public ClientList()
+        public PDFCreate()
         {
-           InitializeComponent();
-            //DataContext = new PDF();
-            DataContext = new ClientVM();           
+            InitializeComponent();
+            DataContext = new PDF();
         }
     }
 }
