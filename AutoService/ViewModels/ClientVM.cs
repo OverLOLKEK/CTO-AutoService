@@ -42,7 +42,7 @@ namespace AutoService.ViewModels
             entities = DB.GetDB();
             LoadClients();
             Clients = new ObservableCollection<Client>(entities.Clients);
-            //Autos = new ObservableCollection<Auto>(entities.Autos);
+           Autos = new ObservableCollection<Auto>(entities.Autos);
             AddClients = new CustomCommand(() =>
             {
                // new EditClientsDir().Show();

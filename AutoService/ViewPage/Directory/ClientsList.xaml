@@ -40,10 +40,10 @@
             <TextBox Text="{Binding SelectedClient.Patronymic}"/>
             <TextBlock Text="Номер телефона"/>
             <TextBox Text="{Binding SelectedClient.Telephone}"/>
-            <!--<TextBlock Text="Автомобиль"/>-->
-            <!--<ComboBox ItemsSource="{Binding Specials}"
-                      SelectedItem="{Binding SelectedClient.Special}"
-                      DisplayMemberPath="Title"/>-->
+            <TextBlock Text="Автомобиль"/>
+            <ComboBox ItemsSource="{Binding Autos}"
+                      SelectedItem="{Binding SelectedClient.Autos}"
+                      DisplayMemberPath="Title"/>
         </StackPanel>
         <Button Grid.Row="2" Content="Добавить новго клиента"
                 Command="{Binding AddClients}"/>
