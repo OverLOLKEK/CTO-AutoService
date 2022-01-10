@@ -8,31 +8,64 @@
       d:DesignHeight="391" d:DesignWidth="633"
       Title="Auto">
     <Grid>
-        <GroupBox Grid.Column="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Список автомобилей"/>
+        <StackPanel Grid.Row="1" Grid.Column="0">
             <ListView ItemsSource="{Binding Autos}" SelectedItem="{Binding SelectedAuto}">
-                <!--Изменить оба Binding-->
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Гос. номер" Width="80" DisplayMemberBinding="{Binding GoverNumber}"/>
-                        <GridViewColumn Header="Модель" Width="70" DisplayMemberBinding="{Binding Model}"/>
-                        <GridViewColumn Header="Год выпуска" Width="90" DisplayMemberBinding="{Binding YearOfIssue}"/>
-                        <GridViewColumn Header="Пробег" Width="70" DisplayMemberBinding="{Binding Mileage}"/>
-                        <GridViewColumn Header="VIN" Width="40" DisplayMemberBinding="{Binding VIN}"/>
-                        <GridViewColumn Header="Двигатель" Width="70" DisplayMemberBinding="{Binding Engine}"/>
-                        <GridViewColumn Header="Кузов" Width="70" DisplayMemberBinding="{Binding Body}"/>
-                        <GridViewColumn Header="Шасси" Width="70" DisplayMemberBinding="{Binding Chassis}"/>
+                        <GridViewColumn Header="Модель" Width="65" DisplayMemberBinding="{Binding Model}"/>
+                        <GridViewColumn Header="VIN/FRAME" Width="35" DisplayMemberBinding="{Binding VIN}"/>
+                        <GridViewColumn Header="Двигатель" Width="65" DisplayMemberBinding="{Binding Engine}"/>
+                        <GridViewColumn Header="Кузов" Width="120" DisplayMemberBinding="{Binding Body}"/>
                     </GridView>
                 </ListView.View>
-
-                <ListView.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Добавить авто" Command="{Binding AddAuto}"/>
-                        <MenuItem Header="Редактировать авто" Command="{Binding EditAuto}"/>
-                        <MenuItem Header="Удалить авто" Command="{Binding RemoveAuto}"/>
-                    </ContextMenu>
-                </ListView.ContextMenu>
-
             </ListView>
-        </GroupBox>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Модель"/>
+            <TextBox Text="{Binding SelectedAuto.Model}"/>
+            <TextBlock Text="VIN/FRAME"/>
+            <TextBox Text="{Binding SelectedAuto.VIN}" />
+            <TextBlock Text="Двигатель"/>
+            <TextBox Text="{Binding SelectedAuto.Engine}"/>
+            <TextBlock Text="Кузов"/>
+            <TextBox Text="{Binding SelectedAuto.Body}"/>
+            <TextBlock Text="Шасси"/>
+            <TextBox Text="{Binding SelectedAuto.Chassis}"/>
+            <TextBlock Text="Год выпуска"/>
+            <TextBox Text="{Binding SelectedAuto.Year_Issue}"/>
+            <TextBlock Text="Пробег"/>
+            <TextBox Text="{Binding SelectedAuto.Mileage}"/>
+            <TextBlock Text="Владелец"/>
+            <ComboBox ItemsSource="{Binding Clients}"
+                      SelectedItem="{Binding SelectedAuto.Clients}"
+                      DisplayMemberPath="Firstname"/>
+
+
+        </StackPanel>
+        <Button Grid.Row="2" Content="Добавить новый авто"
+                Command="{Binding AddAuto}"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Сохранить"
+                Command="{Binding SaveAuto}"/>
+        <Button Grid.Row="1" Content="Удалить"
+                Command="{Binding RemoveAuto}" Grid.ColumnSpan="2" Margin="316,330,0,5"/>
     </Grid>
 </Page>
+<!--<GridViewColumn Header="Гос. номер" Width="80" DisplayMemberBinding="{Binding GoverNumber}"/>
+<GridViewColumn Header="Модель" Width="70" DisplayMemberBinding="{Binding Model}"/>
+<GridViewColumn Header="Год выпуска" Width="90" DisplayMemberBinding="{Binding YearOfIssue}"/>
+<GridViewColumn Header="Пробег" Width="70" DisplayMemberBinding="{Binding Mileage}"/>
+<GridViewColumn Header="VIN" Width="40" DisplayMemberBinding="{Binding VIN}"/>
+<GridViewColumn Header="Двигатель" Width="70" DisplayMemberBinding="{Binding Engine}"/>
+<GridViewColumn Header="Кузов" Width="70" DisplayMemberBinding="{Binding Body}"/>
+<GridViewColumn Header="Шасси" Width="70" DisplayMemberBinding="{Binding Chassis}"/>-->

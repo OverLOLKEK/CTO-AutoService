@@ -38,9 +38,10 @@ namespace AutoService.ViewModels
 
         public ClientVM()
         {
-            GOClient = new CustomCommand(() => { new EditClientsDir().Show(); });
+            //GOClient = new CustomCommand(() => { new EditClientsDir().Show(); });
             entities = DB.GetDB();
             LoadClients();
+            LoadAutos();
             Clients = new ObservableCollection<Client>(entities.Clients);
            Autos = new ObservableCollection<Auto>(entities.Autos);
             AddClients = new CustomCommand(() =>
@@ -54,10 +55,10 @@ namespace AutoService.ViewModels
             {
                 try
                 {
-                   
+                    LoadAutos();
                     entities.SaveChanges();
                     LoadClients();
-                    GOClient = new CustomCommand(() => { new ClientList(); });
+                    //GOClient = new CustomCommand(() => { new ClientList(); });
                 }
                 catch (Exception ex)
                 {
@@ -84,6 +85,12 @@ namespace AutoService.ViewModels
         {
             Clients = new ObservableCollection<Client>(entities.Clients);
             SignalChanged("Clients");
+        }
+        private void LoadAutos()
+        {
+            var entities = DB.GetDB();
+            Autos = new ObservableCollection<Auto>(entities.Autos);
+            SignalChanged("Auto");
         }
 
         void SignalChanged([CallerMemberName] string prop = null) =>

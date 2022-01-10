@@ -41,9 +41,9 @@
             <TextBlock Text="Номер телефона"/>
             <TextBox Text="{Binding SelectedClient.Telephone}"/>
             <TextBlock Text="Автомобиль"/>
-            <ComboBox ItemsSource="{Binding Autos}"
+            <!--<ComboBox ItemsSource="{Binding Autos}"
                       SelectedItem="{Binding SelectedClient.Autos}"
-                      DisplayMemberPath="Title"/>
+                      DisplayMemberPath="Model"/>-->
         </StackPanel>
         <Button Grid.Row="2" Content="Добавить новго клиента"
                 Command="{Binding AddClients}"/>

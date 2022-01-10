@@ -4,25 +4,27 @@ using AutoService.ViewPage.Directory;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AutoService.ViewModels
 {
-     class AutoVM : BaseViewModel
+     class AutoVM : BaseViewModel, INotifyPropertyChanged
     {
         Entities entities;
-        public ObservableCollection<DBInstance.Auto> Autos { get; set; }
+        public ObservableCollection<Auto> Autos { get; set; }
+        public ObservableCollection<Client> Clients { get; set; }
         public CustomCommand AddAuto { get; set; }
         public CustomCommand SaveAuto { get; set; }
         public CustomCommand GoCreateAuto { get; set; }
 
         public CustomCommand RemoveAuto { get; set; }
 
-        private DBInstance.Auto selectedAuto;
+        private Auto selectedAuto;
 
-        public DBInstance.Auto SelectedAuto
+        public Auto SelectedAuto
         {
             get => selectedAuto;
             set
@@ -34,15 +36,16 @@ namespace AutoService.ViewModels
 
         public AutoVM()
         {
-           // GoCreateAuto = new CustomCommand(() => { new EditAutoDir().Show(); });           
-
-            var entities = DB.GetDB();
+            // GoCreateAuto = new CustomCommand(() => { new EditAutoDir().Show(); });                       
+             entities = DB.GetDB();
             LoadAutos();
-            Autos = new ObservableCollection<DBInstance.Auto>(entities.Autos);
-            //Autos = new ObservableCollection<Auto>(entities.Autoes);
+            LoadClients();
+           
+            Clients = new ObservableCollection<Client>(entities.Clients);
+            Autos = new ObservableCollection<Auto>(entities.Autos);           
             AddAuto = new CustomCommand(() =>
             {
-                var auto = new DBInstance.Auto { Model = "Модель", VIN = "VIN номер", Engine = "Двигатель", Body = "Двигатель", Chassis = "Шасси" };
+                var auto = new Auto { Model = "Модель", VIN = "VIN номер", Engine = "Двигатель", Body = "Двигатель", Chassis = "Шасси" };
                 entities.Autos.Add(auto);
                // Autos.Add(auto);
                 SelectedAuto = auto;
@@ -51,6 +54,7 @@ namespace AutoService.ViewModels
             {
                 try
                 {
+                    
                     entities.SaveChanges();
                     LoadAutos();
                 }
@@ -78,8 +82,13 @@ namespace AutoService.ViewModels
         private void LoadAutos()
         {
             var entities = DB.GetDB();
-            Autos = new ObservableCollection<DBInstance.Auto>(entities.Autos);
+            Autos = new ObservableCollection<Auto>(entities.Autos);
             SignalChanged("Auto");
+        }
+        private void LoadClients()
+        {
+            Clients = new ObservableCollection<Client>(entities.Clients);
+            SignalChanged("Clients");
         }
     }
 }

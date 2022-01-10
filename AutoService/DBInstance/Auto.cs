@@ -18,10 +18,10 @@ namespace AutoService.DBInstance
         public string Model { get; set; }
         public string VIN { get; set; }
         public string Engine { get; set; }
-        public string Body { get; set; }
-        public string Chassis { get; set; }
-        public Nullable<System.DateTime> Year_Issue { get; set; }
-        public Nullable<int> Mileage { get; set; }
+        public string Body { get; set; }//кузов
+        public string Chassis { get; set; }//шасси
+        public Nullable<System.DateTime> Year_Issue { get; set; }//год выпуска
+        public Nullable<int> Mileage { get; set; } //пробег
         public int id_Client { get; set; }
     
         public virtual Client Client { get; set; }

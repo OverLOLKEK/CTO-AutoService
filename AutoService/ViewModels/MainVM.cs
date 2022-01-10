@@ -32,10 +32,11 @@ namespace AutoService.ViewModels
         public CustomCommand GoPDF { get; set; }
         public MainVM()
         {            
-            GoAuto = new CustomCommand(() => { new Auto(); });
-            
-          //  GoPDF = new CustomCommand(() => { new PDFCreate(); });
-
+           
+            GoAuto = new CustomCommand(() =>
+            {
+                MainWindow.MainNavigate(new AutoList());
+            });          
             GoInCachBox = new CustomCommand(() =>
             {
                 MainWindow.MainNavigate(new ComingCashbox());
